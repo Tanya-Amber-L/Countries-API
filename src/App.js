@@ -1,22 +1,23 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { fetchAllCountries } from "./api/fetch";
+// import { fetchAllCountries } from "./api/fetch";
 import CountryCard from "./components/countryCard";
+import CountryDetail from "./components/countryDetail";
 
 export default function App() {
-	let [countries, setCountries] = useState([]);
+	// let [countries, setCountries] = useState([]);
 
-	fetchAllCountries(setCountries);
+	// fetchAllCountries(setCountries);
 
 	return (
 		<Router>
 			<div>
-				<h1>Hello!</h1>
 				{/* <CountryCard countries={countries} /> */}
 				<Routes>
+					<Route path="/" element={<CountryCard />} />
 					<Route
-						path="/"
-						element={<CountryCard countries={countries} />}
+						path="/detail/:countryName"
+						element={<CountryDetail />}
 					/>
 				</Routes>
 			</div>

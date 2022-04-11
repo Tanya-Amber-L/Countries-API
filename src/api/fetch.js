@@ -7,3 +7,16 @@ export const fetchAllCountries = async (setCountries) => {
 		console.error(err);
 	}
 };
+
+export const fetchSoloCountry = async (countryName) => {
+	try {
+		const res = await fetch(
+			`https://restcountries.com/v3.1/name/${countryName}`
+		);
+		const data = await res.json();
+		return data;
+		// console.log(countryName);
+	} catch (err) {
+		console.error("Error:" + err);
+	}
+};

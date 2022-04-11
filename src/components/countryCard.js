@@ -1,39 +1,48 @@
-export default function CountryCard({ countries }) {
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { fetchAllCountries } from "../api/fetch";
+
+export default function CountryCard() {
+	let [countries, setCountries] = useState([]);
+
+	fetchAllCountries(setCountries);
+
 	return (
 		<div className="countries-list">
 			{countries.map((country) => {
+				let name = country.name.common;
 				return (
-					<div className="country-summary">
-						<img
-							className="country-img"
-							src={country.flags.png}
-							alt={country.name.common + "flag"}
-							width="100"
-						/>
-						<div className="country-infos">
-							<h2 className="country-title">
-								{country.name.common}
-							</h2>
-							<p className="country-detail">
-								<span className="country-detail-title">
-									Population:{" "}
-								</span>
-								{country.population}
-							</p>
-							<p className="country-detail">
-								<span className="country-detail-title">
-									Region:{" "}
-								</span>
-								{country.region}
-							</p>
-							<p className="country-detail">
-								<span className="country-detail-title">
-									Capital:{" "}
-								</span>
-								{country.capital}
-							</p>
+					<Link to={`detail/${name}`} key={name}>
+						<div className="country-summary">
+							<img
+								className="summary-img"
+								src={country.flags.png}
+								alt={name + " flag"}
+								width="100"
+							/>
+							<div className="summary-infos">
+								<h2 className="summary-title">{name}</h2>
+								<p className="summary-detail">
+									<span className="summary-detail-title">
+										Population:
+									</span>
+									{country.population}
+								</p>
+								<p className="summary-detail">
+									<span className="summary-detail-title">
+										Region:
+									</span>
+									{country.region}
+								</p>
+								<p className="summary-detail">
+									<span className="summary-detail-title">
+										Capital:
+									</span>
+									{country.capital}
+								</p>
+							</div>
 						</div>
-					</div>
+					</Link>
 				);
 			})}
 		</div>

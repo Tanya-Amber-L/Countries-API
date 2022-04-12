@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchSoloCountry } from "../api/fetch";
-import data from "../data/countries.json";
+import BorderCountry from "./borderCountry";
 
 export default function CountryDetail() {
 	const [soloCountry, setSoloCountry] = useState([]);
@@ -20,19 +20,6 @@ export default function CountryDetail() {
 			nativeNames.push(object[1].common);
 		});
 		return nativeNames.join(", ");
-	};
-
-	let showBorderCountriesNames = (data) => {
-		const borderCodes = soloCountry.borders;
-		let borderCountries = [];
-		borderCodes.forEach((code) => {
-			for (let item of data) {
-				if (item.code === code) {
-					borderCountries.push(item.name);
-				}
-			}
-		});
-		return borderCountries.join(", ");
 	};
 
 	return (
@@ -105,9 +92,13 @@ export default function CountryDetail() {
 								</p>
 							</div>
 						</div>
-						<div>
-							<p>Border Countries: </p>
-							{showBorderCountriesNames(data)}
+						<div className="country-borders">
+							<p className="border-title">Border Countries: </p>
+							{
+								<BorderCountry
+									borderCodes={soloCountry.borders}
+								/>
+							}
 						</div>
 					</div>
 				</>

@@ -1,12 +1,6 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { fetchAllCountries } from "../api/fetch";
 
-export default function CountryCard() {
-	let [countries, setCountries] = useState([]);
-
-	fetchAllCountries(setCountries);
-
+export default function CountryCard({ countries }) {
 	return (
 		<div className="countries-list">
 			{countries.map((country) => {

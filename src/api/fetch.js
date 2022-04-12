@@ -19,3 +19,15 @@ export const fetchSoloCountry = async (countryName) => {
 		console.error("Error:" + err);
 	}
 };
+
+export const fetchCountriesFromRegion = async (region) => {
+	try {
+		const res = await fetch(
+			`https://restcountries.com/v3.1/region/${region}`
+		);
+		const data = await res.json();
+		return data;
+	} catch (err) {
+		console.error("Error:" + err);
+	}
+};

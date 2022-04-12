@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchSoloCountry, getBorderCountries } from "../api/fetch";
+import { fetchSoloCountry } from "../api/fetch";
+import data from "../data/countries.json";
 
 export default function CountryDetail() {
 	const [soloCountry, setSoloCountry] = useState([]);
@@ -21,21 +22,18 @@ export default function CountryDetail() {
 		return nativeNames.join(", ");
 	};
 
-	// let showBorderCountries = (soloCountry) => {
-	// 	const borderCodes = soloCountry.borders;
-
-	// 	async function fetchBorderCountries(code) {
-	// 		const res = await fetch(
-	// 			`https://restcountries.com/v3.1/alpha/${code}`
-	// 		);
-	// 		let data = await res.json();
-	// 		return data[0].name.common;
-	// 	}
-
-	// 	Promise.all(borderCodes.map((code) => fetchBorderCountries(code))).then(
-	// 		(res) => "Test" + res.join(", ")
-	// 	);
-	// };
+	let showBorderCountriesNames = (data) => {
+		const borderCodes = soloCountry.borders;
+		let borderCountries = [];
+		borderCodes.forEach((code) => {
+			for (let item of data) {
+				if (item.code === code) {
+					borderCountries.push(item.name);
+				}
+			}
+		});
+		return borderCountries.join(", ");
+	};
 
 	return (
 		<div className="country-solo">
@@ -109,7 +107,7 @@ export default function CountryDetail() {
 						</div>
 						<div>
 							<p>Border Countries: </p>
-							{soloCountry.borders}
+							{showBorderCountriesNames(data)}
 						</div>
 					</div>
 				</>

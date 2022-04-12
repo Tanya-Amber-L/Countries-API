@@ -15,8 +15,24 @@ export const fetchSoloCountry = async (countryName) => {
 		);
 		const data = await res.json();
 		return data;
-		// console.log(countryName);
 	} catch (err) {
 		console.error("Error:" + err);
 	}
 };
+
+// export const getBorderCountries = (data) => {
+// 	const borderCodes = data[0].borders;
+// 	let borderCountries = [];
+// 	borderCodes.forEach(async (code) => {
+// 		try {
+// 			const res = await fetch(
+// 				`https://restcountries.com/v3.1/alpha/${code}`
+// 			);
+// 			const data = await res.json();
+// 			borderCountries.push(data[0].name.common);
+// 		} catch (err) {
+// 			console.error("Error:" + err);
+// 		}
+// 	});
+// 	return borderCountries;
+// };

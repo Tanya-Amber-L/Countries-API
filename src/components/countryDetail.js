@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchSoloCountry } from "../api/fetch";
+import { fetchSoloCountry, getBorderCountries } from "../api/fetch";
 
 export default function CountryDetail() {
 	const [soloCountry, setSoloCountry] = useState([]);
@@ -11,6 +11,31 @@ export default function CountryDetail() {
 		setSoloCountry(data[0]);
 		setIsLoaded(true);
 	});
+
+	let showNativeNames = () => {
+		const entries = Object.entries(soloCountry.name.nativeName);
+		const nativeNames = [];
+		entries.forEach((object) => {
+			nativeNames.push(object[1].common);
+		});
+		return nativeNames.join(", ");
+	};
+
+	// let showBorderCountries = (soloCountry) => {
+	// 	const borderCodes = soloCountry.borders;
+
+	// 	async function fetchBorderCountries(code) {
+	// 		const res = await fetch(
+	// 			`https://restcountries.com/v3.1/alpha/${code}`
+	// 		);
+	// 		let data = await res.json();
+	// 		return data[0].name.common;
+	// 	}
+
+	// 	Promise.all(borderCodes.map((code) => fetchBorderCountries(code))).then(
+	// 		(res) => "Test" + res.join(", ")
+	// 	);
+	// };
 
 	return (
 		<div className="country-solo">
@@ -32,16 +57,7 @@ export default function CountryDetail() {
 									<span className="country-detail-title">
 										Native Name(s):
 									</span>
-									{/* {Object.keys(
-										soloCountry.name.nativeName
-									).forEach((key) => console.log(key.common))} */}
-									{/* {console.log(soloCountry.name.nativeName)} */}
-									{/* {
-									Object.values(
-										soloCountry.name.nativeName
-									).join(", ")
-									
-									} */}
+									{showNativeNames()}
 								</p>
 								<p className="country-detail">
 									<span className="country-detail-title">
@@ -93,6 +109,7 @@ export default function CountryDetail() {
 						</div>
 						<div>
 							<p>Border Countries: </p>
+							{soloCountry.borders}
 						</div>
 					</div>
 				</>

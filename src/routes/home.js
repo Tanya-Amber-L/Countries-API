@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchAllCountries } from "../api/fetch";
+import { fetchAllCountries, fetchCountriesFromRegion } from "../api/fetch";
 import CountryCard from "../components/countryCard";
 import RegionFilter from "../components/regionFilter";
 
@@ -9,8 +9,11 @@ export default function HomePage() {
 
 	if (region === "all") {
 		fetchAllCountries(setCountries);
+	} else {
+		fetchCountriesFromRegion(region).then((data) => {
+			setCountries(data);
+		});
 	}
-	console.log(region);
 
 	return (
 		<>

@@ -6,8 +6,9 @@ import SearchBar from "../components/searchBar";
 
 export default function HomePage() {
     let [countries, setCountries] = useState([]);
+    let [filteredCountries, setFilteredCountries] = useState([]);
     let [region, setRegion] = useState("all");
-    const [inputText, setInputText] = useState("");
+    let [inputText, setInputText] = useState("");
 
     useEffect(() => {
         if (region === "all") {
@@ -23,19 +24,17 @@ export default function HomePage() {
         const filteredCountries = countries.filter((country) => {
             return country.name.common.toLowerCase().includes(inputText.toLowerCase())
         })
-        setCountries(filteredCountries)
+        setFilteredCountries(filteredCountries)
     };
-
     useEffect(() => {
         if (inputText !== "") {
             filterCountries(countries)
         }
-        console.log(inputText)
-    }, [filterCountries, inputText])
+    }, [inputText])
 
     return (<>
         <SearchBar setInputText={setInputText}/>
-        <RegionFilter setRegion={setRegion}/>
-        <CountryCard countries={countries}/>
+        <RegionFilter setRegion={setRegion} disabled={inputText === "" ? false : true}/>
+        <CountryCard countries={inputText === "" ? countries : filteredCountries}/>
     </>);
 }

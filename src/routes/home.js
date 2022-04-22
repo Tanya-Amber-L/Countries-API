@@ -5,17 +5,19 @@ import RegionFilter from "../components/regionFilter";
 import SearchBar from "../components/searchBar";
 
 export default function HomePage() {
-    let [countries, setCountries] = useState([]);
-    let [filteredCountries, setFilteredCountries] = useState([]);
-    let [region, setRegion] = useState("all");
-    let [inputText, setInputText] = useState("");
+    const [countries, setCountries] = useState([]);
+    const [filteredCountries, setFilteredCountries] = useState([]);
+    const [region, setRegion] = useState("all");
+    const [inputText, setInputText] = useState("");
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         if (region === "all") {
-            fetchAllCountries(setCountries)
+            fetchAllCountries(setCountries).then(() => setIsLoaded(true))
         } else {
             fetchCountriesFromRegion(region).then((data) => {
                 setCountries(data);
+                setIsLoaded(true)
             });
         }
     }, [region])
@@ -35,6 +37,6 @@ export default function HomePage() {
     return (<>
         <SearchBar setInputText={setInputText}/>
         <RegionFilter setRegion={setRegion} disabled={inputText === "" ? false : true}/>
-        <CountryCard countries={inputText === "" ? countries : filteredCountries}/>
+        <CountryCard countries={inputText === "" ? countries : filteredCountries} isLoaded={isLoaded}/>
     </>);
 }

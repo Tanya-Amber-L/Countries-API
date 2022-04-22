@@ -35,8 +35,8 @@ export default function HomePage() {
     }, [inputText])
 
     return (<>
-        <SearchBar setInputText={setInputText}/>
-        <RegionFilter setRegion={setRegion} disabled={inputText === "" ? false : true}/>
+        <SearchBar setInputText={setInputText} disabled={region !== "all"}/>
+        <RegionFilter setRegion={setRegion} disabled={inputText !== ""}/>
         <CountryCard countries={inputText === "" ? countries : filteredCountries} isLoaded={isLoaded}/>
     </>);
 }

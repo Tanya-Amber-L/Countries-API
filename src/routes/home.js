@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import {fetchAllCountries, fetchCountriesFromRegion} from "../api/fetch";
+import { useEffect, useState } from "react";
+import { fetchAllCountries, fetchCountriesFromRegion } from "../api/fetch";
 import CountryCard from "../components/countryCard";
 import RegionFilter from "../components/regionFilter";
 import SearchBar from "../components/searchBar";
@@ -13,30 +13,45 @@ export default function HomePage() {
 
     useEffect(() => {
         if (region === "all") {
-            fetchAllCountries(setCountries).then(() => setIsLoaded(true))
+            fetchAllCountries(setCountries).then(() => setIsLoaded(true));
         } else {
             fetchCountriesFromRegion(region).then((data) => {
                 setCountries(data);
-                setIsLoaded(true)
+                setIsLoaded(true);
             });
         }
-    }, [region])
+    }, [region]);
 
     const filterCountries = (countries) => {
         const filteredCountries = countries.filter((country) => {
-            return country.name.common.toLowerCase().includes(inputText.toLowerCase())
-        })
-        setFilteredCountries(filteredCountries)
+            return country.name.common
+                .toLowerCase()
+                .includes(inputText.toLowerCase());
+        });
+        setFilteredCountries(filteredCountries);
     };
     useEffect(() => {
         if (inputText !== "") {
-            filterCountries(countries)
+            filterCountries(countries);
         }
-    }, [inputText])
+    }, [inputText]);
 
-    return (<>
-        <SearchBar setInputText={setInputText} disabled={region !== "all"}/>
-        <RegionFilter setRegion={setRegion} disabled={inputText !== ""}/>
-        <CountryCard countries={inputText === "" ? countries : filteredCountries} isLoaded={isLoaded}/>
-    </>);
+    return (
+        <>
+            <div className="filters">
+                <SearchBar
+                    setInputText={setInputText}
+                    disabled={region !== "all"}
+                />
+                <RegionFilter
+                    setRegion={setRegion}
+                    disabled={inputText !== ""}
+                />
+            </div>
+            <CountryCard
+                countries={inputText === "" ? countries : filteredCountries}
+                isLoaded={isLoaded}
+            />
+        </>
+    );
 }

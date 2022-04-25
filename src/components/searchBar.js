@@ -1,6 +1,6 @@
-export default function SearchBar({setInputText, disabled}) {
+export default function SearchBar({ setInputText, disabled }) {
     return (
-        <form>
+        <form className="search-bar">
             <input
                 type="text"
                 placeholder="Search for a country..."

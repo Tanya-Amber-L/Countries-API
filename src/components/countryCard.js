@@ -19,21 +19,21 @@ export default function CountryCard({countries, isLoaded}) {
                                     <div className="card-infos">
                                         <h2 className="card-title">{name}</h2>
                                         <p className="card-detail">
-									<span className="card-detail-title">
-										Population:
-									</span>
+                                            <span className="card-detail-title">
+                                                Population:{" "}
+                                            </span>
                                             {country.population}
                                         </p>
                                         <p className="card-detail">
-									<span className="card-detail-title">
-										Region:
-									</span>
+                                            <span className="card-detail-title">
+                                                Region:{" "}
+                                            </span>
                                             {country.region}
                                         </p>
                                         <p className="card-detail">
-									<span className="card-detail-title">
-										Capital:
-									</span>
+                                            <span className="card-detail-title">
+                                                Capital:{" "}
+                                            </span>
                                             {country.capital}
                                         </p>
                                     </div>

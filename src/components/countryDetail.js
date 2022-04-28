@@ -49,7 +49,10 @@ export default function CountryDetail() {
                                     <span className="country-detail-title">
                                         Population:
                                     </span>
-                                    {soloCountry.population}
+                                    {String(soloCountry.population).replace(
+                                        /(.)(?=(\d{3})+$)/g,
+                                        "$1,"
+                                    )}
                                 </p>
                                 <p className="country-detail">
                                     <span className="country-detail-title">

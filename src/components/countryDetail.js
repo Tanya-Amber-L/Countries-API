@@ -41,13 +41,13 @@ export default function CountryDetail() {
                             <div>
                                 <p className="country-detail">
                                     <span className="country-detail-title">
-                                        Native Name(s):
+                                        Native Name(s):{" "}
                                     </span>
                                     {showNativeNames()}
                                 </p>
                                 <p className="country-detail">
                                     <span className="country-detail-title">
-                                        Population:
+                                        Population:{" "}
                                     </span>
                                     {String(soloCountry.population).replace(
                                         /(.)(?=(\d{3})+$)/g,
@@ -56,19 +56,19 @@ export default function CountryDetail() {
                                 </p>
                                 <p className="country-detail">
                                     <span className="country-detail-title">
-                                        Region:
+                                        Region:{" "}
                                     </span>
                                     {soloCountry.region}
                                 </p>
                                 <p className="country-detail">
                                     <span className="country-detail-title">
-                                        Sub Region:
+                                        Sub Region:{" "}
                                     </span>
                                     {soloCountry.subregion}
                                 </p>
                                 <p className="country-detail">
                                     <span className="country-detail-title">
-                                        Capital:
+                                        Capital:{" "}
                                     </span>
                                     {soloCountry.capital}
                                 </p>
@@ -76,19 +76,19 @@ export default function CountryDetail() {
                             <div>
                                 <p className="country-detail">
                                     <span className="country-detail-title">
-                                        Top Level Domain:
+                                        Top Level Domain:{" "}
                                     </span>
                                     {soloCountry.tld}
                                 </p>
                                 <p className="country-detail">
                                     <span className="country-detail-title">
-                                        Currencies:
+                                        Currencies:{" "}
                                     </span>
                                     {soloCountry.capital}
                                 </p>
                                 <p className="country-detail">
                                     <span className="country-detail-title">
-                                        Language(s):
+                                        Language(s):{" "}
                                     </span>
                                     {Object.values(soloCountry.languages).join(
                                         ", "

@@ -80,13 +80,47 @@ option {
     font-size: 2rem;
     padding-bottom: 1rem;
 }
-.card-detail {
+.card-detail, .country-detail {
     font-size: 1.4rem;
     padding-bottom: .5rem;
     font-weight: 300;
 }
-.card-detail-title {
-    font-weight: 400;
+.card-detail-title, .country-detail-title, .border-title {
+    font-weight: 600;
+}
+
+/* COUNTRY DETAIL */
+.country-solo {
+    padding: 3rem;
+}
+.country-img {
+    width: 100%;
+    max-width: 350px;
+    margin: 2rem 0;
+    box-shadow: 0 0 5px #eaeaea;
+}
+.country-name {
+    font-size: 2.3rem;
+    padding: 2rem 0;
+}
+.country-infos div:first-child {
+    padding-bottom: 2rem;
+}
+.country-borders {
+    padding: 2rem 0;
+}
+.border-title {
+    font-size: 1.6rem;
+}
+.border-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.border-item {
+    list-style-type: none;
+    margin: 1rem 1rem 0 0;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 0 5px #c5c5c5;
 }
 
 /* LOADING ANIMATION */

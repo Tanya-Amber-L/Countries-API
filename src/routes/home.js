@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchAllCountries, fetchCountriesFromRegion } from "../api/fetch";
 import CountryCard from "../components/countryCard";
+import Header from "../components/header";
 import RegionFilter from "../components/regionFilter";
 import SearchBar from "../components/searchBar";
 
@@ -38,6 +39,7 @@ export default function HomePage() {
 
     return (
         <>
+            <Header />
             <div className="filters">
                 <SearchBar
                     setInputText={setInputText}

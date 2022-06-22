@@ -1,9 +1,11 @@
 import CountryDetail from "../components/countryDetail";
+import Header from "../components/header";
 
 export default function DetailPage() {
-	return (
-		<>
-			<CountryDetail />
-		</>
-	);
+    return (
+        <>
+            <Header />
+            <CountryDetail />
+        </>
+    );
 }

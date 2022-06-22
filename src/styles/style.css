@@ -1,16 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;800&display=swap");
 
 :root {
-    --light-mode-text: #111517;
-    --light-mode-input: #858585;
-    --light-mode-bg: #fafafa;
-    --light-mode-elem: #ffffff;
+    --text: #111517;
+    --bg: #fafafa;
+    --elem: #ffffff;
+    --box-shadow: #e4e1e1;
+}
+[data-theme='dark'] {
+    --text: #ffffff;
+    --bg: #202c37;
+    --elem: #2b3945;
+    --box-shadow: #141a1f;
 }
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    /* transition: .2s; */
 }
 
 html {
@@ -20,19 +27,31 @@ html {
 body {
     font-size: 1.2em;
     font-family: "Nunito Sans", sans-serif;
-    background-color: var(--light-mode-bg);
+    background-color: var(--bg);
 }
 
 /* HEADER */
 header {
+    color: var(--text);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 3rem 7rem;
-    box-shadow: 0 0 9px #cfcccc;
+    box-shadow: 0 0 9px var(--box-shadow);
 }
 .color-mode {
+    color: var(--text);
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 600;
     font-size: 1.4em;
+    background-color: var(--bg);
+    border: none;
+    cursor: pointer;
+    display: flex;
+}
+
+.color-mode img {
+    margin-right: 5px;
 }
 
 
@@ -45,19 +64,20 @@ header {
 .search-bar input {
     width: 100%;
     padding: 1rem 2rem 1rem 4rem;
-    background: url("../assets/magnifying-glass.svg") 20px no-repeat, var(--light-mode-elem);
+    background: url("../assets/magnifying-glass.svg") 20px no-repeat, var(--elem);
     background-size: 10px;
     font-family: "Nunito Sans", sans-serif;
 }
 .dropdown select {
     padding: 1rem 2rem;
-    background: var(--light-mode-elem);
+    background: var(--elem);
     font-family: "Nunito Sans", sans-serif;
 }
 .search-bar input, .dropdown select {
+    color: var(--text);
     border: none;
     border-radius: 5px;
-    box-shadow: 0 0 7px #eaeaea;
+    box-shadow: 0 0 7px var(--box-shadow);
 }
 option {
     border: none;
@@ -72,20 +92,20 @@ option {
 }
 .countries-list a {
     text-decoration: none;
-    color: var(--light-mode-text);
+    color: var(--text);
 }
 .country-card {
     min-width: 200px;
-    background-color: var(--light-mode-elem);
+    background-color: var(--elem);
     border-radius: 7px;
-    box-shadow: 0 0 7px #eaeaea;
+    box-shadow: 0 0 7px var(--box-shadow);
     margin: 2rem;
 }
 .card-img {
     width: 315px;
     height: 210px;
     border-radius: 7px 7px 0 0;
-    box-shadow: 0 0 5px #eaeaea;
+    box-shadow: 0 0 5px var(--box-shadow);
 }
 .card-infos {
     padding: 2rem;
@@ -106,12 +126,13 @@ option {
 /* COUNTRY DETAIL */
 .country-solo {
     padding: 3rem;
+    color: var(--text);
 }
 .country-img {
     width: 100%;
     max-width: 350px;
     margin: 2rem 0;
-    box-shadow: 0 0 5px #eaeaea;
+    box-shadow: 0 0 5px var(--box-shadow);
 }
 .country-name {
     font-size: 2.3rem;
@@ -134,7 +155,7 @@ option {
     list-style-type: none;
     margin: 1rem 1rem 0 0;
     padding: 1rem 1.5rem;
-    box-shadow: 0 0 5px #c5c5c5;
+    box-shadow: 0 0 5px var(--box-shadow);
 }
 
 /* LOADING ANIMATION */

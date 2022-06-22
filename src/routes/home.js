@@ -5,7 +5,7 @@ import Header from "../components/header";
 import RegionFilter from "../components/regionFilter";
 import SearchBar from "../components/searchBar";
 
-export default function HomePage() {
+export default function HomePage({ toggleTheme }) {
     const [countries, setCountries] = useState([]);
     const [filteredCountries, setFilteredCountries] = useState([]);
     const [region, setRegion] = useState("all");
@@ -39,7 +39,7 @@ export default function HomePage() {
 
     return (
         <>
-            <Header />
+            <Header toggleTheme={toggleTheme} />
             <div className="filters">
                 <SearchBar
                     setInputText={setInputText}
